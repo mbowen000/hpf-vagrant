@@ -25,7 +25,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   # If this value is a shorthand to a box in Vagrant Cloud then
   # config.vm.box_url doesn't need to be specified.
-  config.vm.box = 'chef/ubuntu-14.04'
+  #config.vm.box = 'chef/ubuntu-12.04'
+  config.vm.box = 'hashicorp/precise64'
 
 
   # Assign this VM to a host-only network IP, allowing you to access it
@@ -33,8 +34,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # any other machines on the same network, but cannot be accessed (through this
   # network interface) by any external networks.
   #config.vm.network :private_network, type: 'dhcp'
-  config.vm.network :forwarded_port, host: 1337, guest: 80
+  config.vm.network :forwarded_port, host: 13377, guest: 80
   config.vm.network "public_network"
+  #config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  #config.vm.network "private_network", type: "dhcp"
+  config.vm.synced_folder "./code", "/home/vagrant/projects/", create: true
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -77,10 +81,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.berkshelf.except = []
   config.vm.provider "virtualbox" do |v|
     v.memory = 2048
-    v.cpus = 4
+    v.cpus = 1
 
-#    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-#    v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
   end
 
 

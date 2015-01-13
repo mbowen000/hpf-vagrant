@@ -1,0 +1,15 @@
+description 'starts hpf node application'
+author 'Mike Bowen <mike.scott.bowen@gmail.com>'
+
+respawn
+
+script
+	cd <%= node.hpf.application.deploy_path %>
+	
+	if [ ! -d "<%= node.hpf.application.log_path %>" ]
+	then
+		mkdir <%= node.hpf.application.log_path %>
+	fi
+
+	sails lift > <%= node.hpf.application.log_path %>/hpf.log
+end script

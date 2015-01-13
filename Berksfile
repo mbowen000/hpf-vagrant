@@ -4,3 +4,4 @@ metadata
 
 cookbook "apache2", "~> 2.0.0"
 cookbook "nodejs", "~> 2.2.0"
+cookbook "mongodb", "~> 0.16.2"
