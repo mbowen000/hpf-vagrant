@@ -8,6 +8,6 @@
   CustomLog /var/log/apache2/hpf.access.log combined
   ErrorLog /var/log/apache2/hpf.error.log
 
-  ProxyPass					/hpfapi				localhost:1337
-  ProxyPassReverse			/hpfapi				localhost:1337
+  ProxyPass					/hpfapi				http://localhost:1337
+  ProxyPassReverse			/hpfapi				http://localhost:1337
 </VirtualHost>
